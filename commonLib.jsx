@@ -6,6 +6,11 @@ var SIN30=Math.sin(30/180*Math.PI);
 function mm_to_pt(_mm){
 		return _mm*72/25.4
 }
+//等測図
+function fixSizeToTOSOKU(_trgtSize){
+	_trgtSize*=1/CHIJIMIRITSU_TOKAKUTOEI;
+	  return _trgtSize
+}
 //円を描く
 function drawEllipse(_x,_y,_w,_h,_fill,_stroke){
 	//ドキュメントサイズ取得
