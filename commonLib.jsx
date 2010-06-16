@@ -1,10 +1,30 @@
-﻿//汎用定数
+//汎用定数
 var KATAMUKE_Y_PER=100*Math.sin(35.2666666666666667/180*Math.PI);//0.58*100
 var CHIJIMIRITSU_TOKAKUTOEI=Math.cos(35.2666666666666667/180*Math.PI);//0.82
 var SIN30=Math.sin(30/180*Math.PI);
 //mm→pt
 function mm_to_pt(_mm){
 		return _mm*72/25.4
+}
+//円を描く
+function drawEllipse(_x,_y,_w,_h,_fill,_stroke){
+	//ドキュメントサイズ取得
+	var doc=app.activeDocument;
+	var layer=doc.activeLayer;
+	var docSize=getDocumentSize();
+	
+	var elip=layer.pathItems.ellipse((docSize.h-_y)+_h/2,_x-_w/2,_w,_h);
+	
+	if(!_fill){
+		elip.filled=false;
+		elip.stroked=false;
+	}else{
+		elip.filled=_fill;
+		elip.stroked=_stroke;
+	}
+	//alert(rect.filled)
+	return elip
+	
 }
 //矩形を描く
 function drawRect(_x,_y,_w,_h,_fill,_stroke){
